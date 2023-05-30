@@ -10,7 +10,11 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.json({ race: getRndRace(), class: getRndClass() });
+    res.json({
+        race: getRndRace(),
+        class: getRndClass(),
+        stats: getRndStats(),
+    });
 });
 
 app.get("/stats", (req, res) => {
