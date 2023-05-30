@@ -30,4 +30,20 @@ function getRndRace() {
     return races[rndRaceIndex];
 }
 
-module.exports = { getRndClass, getRndRace };
+function getRndStats() {
+    const returnArray = [];
+    for (let i = 1; i <= 6; i++) {
+        const statArray = [];
+        for (let i = 1; i <= 4; i++) {
+            statArray.push(getRandomInt(1, 6));
+        }
+        const lowestStat = Math.min(...statArray);
+        const lowestIndex = statArray.indexOf(lowestStat);
+        statArray.splice(lowestIndex, 1);
+        const score = statArray.reduce((total, roll) => total + roll, 0);
+        returnArray.push(score);
+    }
+    return returnArray;
+}
+
+module.exports = { getRndClass, getRndRace, getRndStats };

@@ -1,6 +1,6 @@
 const express = require("express");
 require("dotenv").config();
-const { getRndClass, getRndRace } = require("./model/dnd.model");
+const { getRndClass, getRndRace, getRndStats } = require("./model/dnd.model");
 
 const port = process.env.PORT;
 console.log(port);
@@ -11,6 +11,10 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
     res.json({ race: getRndRace(), class: getRndClass() });
+});
+
+app.get("/stats", (req, res) => {
+    res.json(getRndStats());
 });
 
 app.listen(port, () => {
